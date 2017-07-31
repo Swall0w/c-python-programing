@@ -34,6 +34,14 @@ static PyMethodDef hellomethods[] = {
     {NULL},
 };
 
-void initchello(){
-    Py_InitModule("hello", hellomethods);
+static struct PyModuleDef hellomodule = {
+    PyModuleDef_HEAD_INIT,
+    "hellomodule",
+    "",
+    -1,
+    hellomethods
+};
+
+PyMODINIT_FUNC PyInit_hellomodule(void){
+    return PyModule_Create(&hellomodule);
 }
